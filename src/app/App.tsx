@@ -5,7 +5,8 @@ import { Moon, Sun, Github, Linkedin, Mail, MapPin } from 'lucide-react'
 import { profile } from '@/data/profile'
 import Home from '@/pages/Home'
 import Projects from '@/pages/Projects'
-import About from '@/pages/About'
+import Career from '@/pages/About'
+import AboutMe from '@/pages/AboutMe'
 import SkillsExperience from '@/pages/SkillsExperience'
 import Contact from '@/pages/Contact'
 
@@ -34,11 +35,15 @@ const Page = ({ children }: { children: React.ReactNode }) => (
 export default function App() {
   const { enabled, setEnabled } = useDarkMode()
   const location = useLocation()
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [location.pathname])
 
   const nav = useMemo(() => ([
     { to: '/', label: 'Home' },
     { to: '/projects', label: 'Projects' },
-    { to: '/about', label: 'About' },
+    { to: '/career', label: 'Career' },
+    { to: '/about', label: 'About Me' },
     { to: '/skills-experience', label: 'Skills & Experience' },
     { to: '/contact', label: 'Contact' },
   ]), [])
@@ -76,7 +81,8 @@ export default function App() {
           <Routes location={location}>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/about" element={<AboutMe />} />
             <Route path="/skills-experience" element={<SkillsExperience />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
