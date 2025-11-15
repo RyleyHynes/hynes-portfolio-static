@@ -151,7 +151,7 @@ export default function Career() {
       <section className="grid gap-6">
         <header className="flex flex-col gap-1">
           <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Education & Early Career</p>
-          <h3 className="text-2xl font-semibold">State of Tennessee → Rocky Top</h3>
+          <h3 className="text-2xl font-semibold">State of Tennessee</h3>
           <p className="text-sm text-slate-600 dark:text-slate-300">Field science discipline that still drives how I ship software today.</p>
         </header>
 
