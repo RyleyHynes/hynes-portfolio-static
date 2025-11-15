@@ -1,25 +1,10 @@
-import { profile, education, experience } from '@/data/profile'
-import { MapPin, Plane, GraduationCap, Briefcase, Sparkles, Activity } from 'lucide-react'
+import { education, experience } from '@/data/profile'
+import { GraduationCap, Briefcase } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 export default function Career() {
   const ut = education.find((ed) => ed.school.includes('Tennessee'))
   const hca = experience.find((exp) => exp.company === 'HCA Healthcare')
-  type HeroHighlight = {
-    icon: LucideIcon
-    label: string
-    title: string
-    description: string
-    gradient: string
-    border: string
-    iconTone: string
-    badge?: string
-    badgeIcon?: LucideIcon
-    badgeTone?: string
-    subpoints?: string[]
-  }
-
-  const heroHighlights: HeroHighlight[] = []
 
   type EnvRole = {
     title: string
@@ -43,7 +28,6 @@ export default function Career() {
     {
       title: 'Environmental Scientist I — Tennessee Department of Environment & Conservation',
       range: '2019 – 2021',
-      highlight: '⭐',
       bullets: [
         'Built core field experience performing soil, water, and wastewater sampling, including chain-of-custody management and QA/QC verification.',
         'Assisted with subsurface sewage disposal system evaluations and treatment system performance checks.',
@@ -114,19 +98,9 @@ export default function Career() {
   return (
     <section className="grid gap-8 text-slate-900 dark:text-slate-100">
       <header className="grid gap-4">
-        <div className="flex flex-wrap items-center gap-3">
-          <h2 className="section-title mb-0">Career</h2>
-          <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200/70 dark:border-emerald-500/30 bg-white/80 dark:bg-slate-900/40 px-3 py-2 text-xs font-semibold text-emerald-700 dark:text-emerald-200 shadow-sm">
-            <MapPin size={14} />
-            {profile.location}
-            <span className="flex items-center gap-1 text-[10px] font-semibold bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-200 px-2 py-0.5 rounded-full">
-              <Plane size={10} />
-              Open to relocate
-            </span>
-          </span>
-        </div>
+        <h2 className="section-title mb-0">Career</h2>
         <p className="text-slate-600 dark:text-slate-300">
-          I’m a developer who likes building straightforward, reliable software in React/TypeScript and C#/.NET. I care about usability,
+          I’m a developer who likes building straightforward, reliable software. I care about usability,
           clear structure, and making things that feel good to interact with. Away from the keyboard, I spend a lot of time in the mountains —
           climbing and hiking have been a big part of my life, and they’ve taught me to stay patient, prepared, and focused. I try to bring that
           approach into every project I work on.
@@ -199,9 +173,7 @@ export default function Career() {
                 <li key={role.title} className="relative pl-10">
                   <span className="absolute left-2 top-6 h-3 w-3 rounded-full border-2 border-amber-400 bg-white dark:bg-slate-950" aria-hidden="true"></span>
                   <div className="rounded-2xl border border-white/60 dark:border-amber-500/20 bg-white/80 dark:bg-slate-950/60 p-5 shadow-md">
-                    <p className="text-xs uppercase tracking-wide text-amber-500">
-                      {role.highlight ? `${role.highlight} ${role.range}` : role.range}
-                    </p>
+                    <p className="text-xs uppercase tracking-wide text-amber-500">{role.range}</p>
                     <h5 className="text-lg font-semibold">{role.title}</h5>
                     <ul className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">
                       {role.bullets.map((bullet) => (

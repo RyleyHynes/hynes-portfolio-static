@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Routes, Route, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Moon, Sun, Github, Linkedin, Mail, MapPin } from 'lucide-react'
+import { Moon, Sun, Github, Linkedin, Mail, MapPin, Plane } from 'lucide-react'
 import { profile } from '@/data/profile'
 import Home from '@/pages/Home'
 import Projects from '@/pages/Projects'
-import Career from '@/pages/About'
+import Career from '@/pages/Career'
 import AboutMe from '@/pages/AboutMe'
 import SkillsExperience from '@/pages/SkillsExperience'
 import Contact from '@/pages/Contact'
@@ -44,7 +44,7 @@ export default function App() {
     { to: '/projects', label: 'Projects' },
     { to: '/career', label: 'Career' },
     { to: '/about', label: 'About Me' },
-    { to: '/skills-experience', label: 'Skills & Experience' },
+    { to: '/skills-experience', label: 'Tech Stack & Skills' },
     { to: '/contact', label: 'Contact' },
   ]), [])
 
@@ -91,7 +91,13 @@ export default function App() {
 
       <footer className="border-t border-slate-200/60 dark:border-slate-800 py-8">
         <div className="container-padded text-sm text-slate-500 dark:text-slate-400 flex flex-col sm:flex-row gap-3 sm:items-center justify-between">
-          <div className="flex items-center gap-2"><MapPin size={16}/>{profile.location}</div>
+          <div className="flex flex-wrap items-center gap-3 text-slate-600 dark:text-slate-300">
+            <span className="flex items-center gap-2"><MapPin size={16}/>{profile.location}</span>
+            <span className="flex items-center gap-1 text-xs font-semibold bg-emerald-50 dark:bg-emerald-400/10 text-emerald-700 dark:text-emerald-200 px-2 py-0.5 rounded-full">
+              <Plane size={12} />
+              Open to relocation
+            </span>
+          </div>
           <div className="flex items-center gap-4">
             <a className="navlink" href={`mailto:${profile.email}`}><Mail className="inline-block mr-1" size={16}/> {profile.email}</a>
             <a className="navlink" href={profile.github} target="_blank" rel="noreferrer">GitHub</a>

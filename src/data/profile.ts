@@ -31,54 +31,7 @@ export type ExperienceCompany = {
   roles: ExperienceRole[];
 };
 
-export const experience: ExperienceCompany[] = [
-  {
-    company: 'HCA Healthcare',
-    location: 'Nashville, TN',
-    roles: [
-      {
-        title: 'Application Engineer II',
-        range: 'Nov 2024 – Present',
-        blurb:
-          'Own the full stack for patient-facing workflows—shipping React/TypeScript UI, integrating REST services, hardening releases, and guiding the team through agile rituals.',
-        bullets: [
-          'Developed and maintained complex web UI features in React with TypeScript, ensuring responsive, accessible, and user-friendly experiences aligned with UX designs.',
-          'Integrated REST API endpoints into frontend features using Swagger documentation and supported backend workflows with C#.NET scripts, improving data flow across applications.',
-          'Built unit and integration test coverage with Vitest, Jest, and React Testing Library, partnering with QA to ensure stable releases that improved healthcare workflows.',
-          'Participated in on-call support rotations, troubleshooting high-priority incidents for healthcare professionals to ensure uninterrupted workflows and timely patient care.',
-          'Led Scrum ceremonies including sprint planning, retrospectives, and backlog refinement, ensuring alignment across engineers, QA, and product teams while providing leadership that kept development on track and prioritized high-impact work.',
-          'Mentored junior developers through code reviews and pair programming, fostering growth while ensuring the team delivered maintainable, well-tested code.',
-        ],
-      },
-      {
-        title: 'Application Engineer I',
-        range: 'Sep 2023 – Nov 2024',
-        blurb:
-          'Delivered cross-application features while growing from frontend specialist into a full-stack contributor focused on reliability, on-call operations, and agile enablement.',
-        bullets: [
-          'Owned delivery of frontend features across multiple healthcare applications, integrating Redux, RTK Query, and REST APIs to deliver seamless workflows for doctors and nurses.',
-          'Expanded into backend development with C# .NET, assisting in the implementation of internal API endpoints and service logic under the guidance of senior engineers.',
-          'Ensured reliability by validating APIs with Postman and collaborating in debugging sessions across frontend and backend code, helping resolve issues faster and improve release stability.',
-          'Participated in monthly on-call rotations, assisting with incident triage and building fluency in system monitoring and recovery workflows to reduce downtime and maintain reliable healthcare applications.',
-          'Contributed to backlog grooming and sprint reviews within a cross-functional agile team, refining priorities and ensuring alignment across engineering, QA, and product stakeholders for smoother feature delivery.',
-        ],
-      },
-      {
-        title: 'Technical Resident Application Engineer',
-        range: 'Jan 2023 – Sep 2023',
-        blurb:
-          'Laid the foundations of enterprise UI craft—shipping accessible React features, scaling the Neutron design system, partnering with design/QA, and learning CI/CD in Azure DevOps.',
-        bullets: [
-          'Built accessible, responsive interfaces in a healthcare setting with React and TypeScript, strengthening enterprise-scale frontend reliability and supporting workflows.',
-          'Enhanced shared component libraries and styled interfaces with HCA’s Neutron design system, ensuring cross-team design consistency and accelerating development speed.',
-          'Partnered with designers in Figma to translate mockups into production-ready UI, ensuring technical feasibility of UX designs and reducing rework cycles.',
-          'Supported agile delivery cycles by managing work through Azure DevOps, contributing to sprint goals, and gaining hands-on exposure to CI/CD pipelines that streamlined releases.',
-          'Collaborated with QA by manually testing UI components and contributing to bug resolution efforts, helping improve release stability and deepening understanding of quality assurance workflows.',
-        ],
-      },
-    ],
-  },
-];
+export const experience: ExperienceCompany[] = [];
 
 export const education = [
   { school: 'Nashville Software School', detail: 'Full‑Stack Web Development Certificate', range: 'Apr 2022 – Sep 2022' },
