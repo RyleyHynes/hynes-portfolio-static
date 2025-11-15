@@ -17,22 +17,19 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: frontend
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
+          cache-dependency-path: package-lock.json
       - run: npm ci
       - run: npm run build    # creates dist/ (Vite) or build/ (CRA)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: frontend/dist # use frontend/build if CRA
+          path: dist
   deploy:
     needs: build
     runs-on: ubuntu-latest
