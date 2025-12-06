@@ -21,9 +21,9 @@ afterEach(() => {
 
 describe('portfolioApi utilities', () => {
   it('resolves base URL based on PROD env', () => {
-    vi.stubEnv('PROD', 'true')
+    vi.stubEnv('PROD', true)
     expect(resolveBaseUrl()).toBe('/api/')
-    vi.stubEnv('PROD', '')
+    vi.stubEnv('PROD', false)
     expect(resolveBaseUrl()).toBe('http://localhost:8000/api/')
   })
 
