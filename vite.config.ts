@@ -40,10 +40,11 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
     coverage: {
-      include: ['src/**'],
+      provider: 'v8',
+      include: ['src/**/*.{ts,tsx}'],
       exclude: ['src/stories/**', 'src/components/archived/**', 'src/main.tsx'],
-      provider: 'istanbul',
-      reporter: ['html', 'json-summary', 'json'],
+      reporter: ['text', 'json-summary', 'html'],
+      reportsDirectory: 'coverage/report',
       thresholds: {
         lines: 80,
         branches: 70,
