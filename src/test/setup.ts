@@ -15,7 +15,6 @@ class MockIntersectionObserver implements IntersectionObserver {
 }
 
 if (!window.IntersectionObserver) {
-  // @ts-expect-error polyfill for jsdom
   window.IntersectionObserver = MockIntersectionObserver
 }
 
