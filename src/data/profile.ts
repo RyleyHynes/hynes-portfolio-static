@@ -1,3 +1,7 @@
+/**
+ * Hard-coded personal info driving hero, contact, and footer details.
+ * Mirrors the content that would otherwise come from a CMS.
+ */
 export const profile = {
   name: 'Ryley Hynes',
   title: 'Full‑Stack Application Engineer',
@@ -10,6 +14,9 @@ export const profile = {
     'Full-stack engineer crafting reliable, human-centered web applications.I build modern React + TypeScript frontends and resilient backend APIs with Django and .NET — focused on clean architecture, accessible design, and code that teams love to maintain.',
 }
 
+/**
+ * Categorized skill lists for the skills/experience page.
+ */
 export const skills = {
   frontend: ['TypeScript','React','Redux','RTK Query','HTML5','CSS3','SCSS','Bootstrap','Figma','Neutron DS'],
   backend: ['C#','.NET','Python','Django','SQL','CosmosDB','REST','Swagger/OpenAPI'],
@@ -31,6 +38,9 @@ export type ExperienceCompany = {
   roles: ExperienceRole[];
 };
 
+/**
+ * Full work history including roles, timelines, blurbs, and highlights.
+ */
 export const experience: ExperienceCompany[] = [
   {
     company: 'HCA Healthcare',
@@ -80,15 +90,23 @@ export const experience: ExperienceCompany[] = [
   },
 ];
 
+/**
+ * Formal education and certification timeline.
+ */
 export const education = [
   { school: 'Nashville Software School', detail: 'Full‑Stack Web Development Certificate', range: 'Apr 2022 – Sep 2022' },
   { school: 'University of Tennessee, Knoxville', detail: 'B.S. Environmental & Soil Science, Minor in Watershed', range: 'Aug 2017 – Aug 2019' },
 ]
 
 
-// Reuse the same stack for all apps
+/**
+ * Shared tech stack reference reused across project cards.
+ */
 export const STACK = ['TypeScript', 'React', 'SCSS', 'Python/Django', 'SQLite'] as const;
 
+/**
+ * Portfolio applications with marketing blurbs, key features, links, and stack.
+ */
 export const projects = [
   {
     name: 'Peak Planner',

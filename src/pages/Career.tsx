@@ -2,10 +2,17 @@ import { education, experience } from '@/data/profile'
 import { GraduationCap, Briefcase } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
+/**
+ * Timeline and narrative of professional and education experience.
+ * Pulls structured data from `profile` plus localized environmental science history.
+ */
 export default function Career() {
   const ut = education.find((ed) => ed.school.includes('Tennessee'))
   const hca = experience.find((exp) => exp.company === 'HCA Healthcare')
 
+  /**
+   * Environmental-science roles held prior to software engineering.
+   */
   type EnvRole = {
     title: string
     range: string
@@ -13,6 +20,9 @@ export default function Career() {
     highlight?: string
   }
 
+  /**
+   * Chronological list capturing responsibilities before switching careers.
+   */
   const envRoles: EnvRole[] = [
     {
       title: 'Environmental Scientist II — Tennessee Department of Environment & Conservation',
@@ -38,6 +48,9 @@ export default function Career() {
     },
   ]
 
+  /**
+   * Card layout metadata for the education callouts.
+   */
   type EducationHighlight = {
     school: string
     title: string
@@ -51,6 +64,9 @@ export default function Career() {
     bullets?: string[]
   }
 
+  /**
+   * Education/certification cards that render with gradient chrome.
+   */
   const educationHighlights: EducationHighlight[] = [
     {
       school: 'Nashville Software School',

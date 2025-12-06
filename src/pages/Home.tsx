@@ -3,6 +3,9 @@ import { projects } from '@/data/profile'
 import { Link } from 'react-router-dom'
 import { ArrowUpRight} from 'lucide-react'
 
+/**
+ * Landing page hero plus teaser cards for select projects.
+ */
 export default function Home() {
   return (
     <section className="grid gap-10">

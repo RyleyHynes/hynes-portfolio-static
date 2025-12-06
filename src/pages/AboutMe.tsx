@@ -1,107 +1,75 @@
+/**
+ * External Imports
+*/
 import { useCallback, useEffect, useState } from 'react'
-import { profile } from '@/data/profile'
 import { MapPin, Plane } from 'lucide-react'
-import lg1 from '@/assets/trips/lookingGlass/LG1.jpeg'
-import lg2 from '@/assets/trips/lookingGlass/LG2.jpeg'
-import lg3 from '@/assets/trips/lookingGlass/LG3.jpeg'
-import lg4 from '@/assets/trips/lookingGlass/LG4.jpeg'
-import lg5 from '@/assets/trips/lookingGlass/LG5.jpeg'
-import lg6 from '@/assets/trips/lookingGlass/LG6.jpeg'
-import lg7 from '@/assets/trips/lookingGlass/LG7.jpeg'
-import teton1 from '@/assets/trips/teton/T1.jpeg'
-import teton2 from '@/assets/trips/teton/T2.jpeg'
-import teton3 from '@/assets/trips/teton/T3.jpeg'
-import teton4 from '@/assets/trips/teton/T4.jpeg'
-import teton5 from '@/assets/trips/teton/T5.jpeg'
-import teton6 from '@/assets/trips/teton/T6.jpeg'
-import teton7 from '@/assets/trips/teton/T7.jpeg'
-import teton8 from '@/assets/trips/teton/T8.jpeg'
-import teton9 from '@/assets/trips/teton/T9.jpeg'
-import teton10 from '@/assets/trips/teton/T10.jpeg'
-import rainier1 from '@/assets/trips/rainer/R1.jpeg'
-import rainier2 from '@/assets/trips/rainer/R2.jpeg'
-import rainier3 from '@/assets/trips/rainer/R3.jpeg'
-import rainier4 from '@/assets/trips/rainer/R4.jpeg'
-import rainier5 from '@/assets/trips/rainer/R5.jpeg'
-import rainier6 from '@/assets/trips/rainer/R6.jpeg'
-import rainier7 from '@/assets/trips/rainer/R7.jpeg'
-import rainier8 from '@/assets/trips/rainer/R8.jpeg'
-import rainier9 from '@/assets/trips/rainer/R9.jpeg'
-import whitney1 from '@/assets/trips/whitney/W1.jpeg'
-import whitney2 from '@/assets/trips/whitney/W2.jpeg'
-import whitney3 from '@/assets/trips/whitney/W3.jpeg'
-import whitney4 from '@/assets/trips/whitney/W4.jpeg'
-import whitney5 from '@/assets/trips/whitney/W5.jpeg'
-import whitney6 from '@/assets/trips/whitney/W6.jpeg'
-import whitney7 from '@/assets/trips/whitney/W7.jpeg'
-import whitney8 from '@/assets/trips/whitney/W8.jpeg'
-import whitney9 from '@/assets/trips/whitney/W9.jpeg'
-import whitney10 from '@/assets/trips/whitney/W10.jpeg'
-import whitney12 from '@/assets/trips/whitney/W12.jpeg'
-import whitney13 from '@/assets/trips/whitney/W13.jpeg'
-import mojon1 from '@/assets/trips/mojonRojo/MR1.jpeg'
-import mojon2 from '@/assets/trips/mojonRojo/MR2.jpeg'
-import mojon3 from '@/assets/trips/mojonRojo/MR3.jpeg'
-import mojon4 from '@/assets/trips/mojonRojo/MR4.jpeg'
-import mojon5 from '@/assets/trips/mojonRojo/MR5.jpeg'
-import mojon6 from '@/assets/trips/mojonRojo/MR6.jpeg'
-import mojon7 from '@/assets/trips/mojonRojo/MR7.jpeg'
-import mojon8 from '@/assets/trips/mojonRojo/MR8.jpeg'
-import mojon9 from '@/assets/trips/mojonRojo/MR9.jpeg'
-import mojon10 from '@/assets/trips/mojonRojo/MR10.jpeg'
-import mojon11 from '@/assets/trips/mojonRojo/MR11.jpeg'
-import mojon12 from '@/assets/trips/mojonRojo/MR12.jpeg'
+/**
+ * Internal Imports
+ */
+import { profile } from '@/data/profile'
+import {
+  lookingGlassPhotos,
+  tetonPhotos,
+  rainierPhotos,
+  whitneyPhotos,
+  mojonRojoPhotos,
+} from '@/assets/trips'
 
-// To use your own summit photos:
-// 1. Drop files under src/assets/trips/<mountain-name>/photo-1.jpg.
-// 2. Import them above (e.g., import teton1 from '@/assets/trips/teton/photo-1.jpg').
-// 3. Add them to the `photos` array below in the order you want them displayed.
+/**
+ * Defines the metadata for each mountain card and its carousel.
+ */
 type MountainTrip = {
   name: string
   range: string
   elevation: string
   blurb: string
-  photos: string[]
+  photos: readonly string[]
 }
 
+/**
+ * Curated summits used to illustrate personal stories and photography.
+ */
 const mountains: MountainTrip[] = [
   {
     name: 'Mount Rainier',
     range: 'Cascade Range, WA',
     elevation: '14,411 ft',
-    photos: [rainier1, rainier2, rainier3, rainier4, rainier5, rainier6, rainier7, rainier8, rainier9],
+    photos: rainierPhotos,
     blurb: 'Long glacier pushes, rope teams, and weather windows that demand patience and planning — a perfect metaphor for product work.',
   },
   {
     name: 'Grand Teton',
     range: 'Teton Range, WY',
     elevation: '13,775 ft',
-    photos: [teton1, teton2, teton3, teton4, teton5, teton6, teton7, teton8, teton9, teton10],
+    photos: tetonPhotos,
     blurb: 'My first major alpine summit — where I learned to love early starts, glacier travel, and moving efficiently on ridge lines.',
   },
   {
     name: 'Mount Whitney',
     range: 'Sierra Nevada, CA',
     elevation: '14,505 ft',
-    photos: [whitney1, whitney2, whitney3, whitney4, whitney5, whitney6, whitney7, whitney8, whitney9, whitney10, whitney12, whitney13],
+    photos: whitneyPhotos,
     blurb: 'Exposure, switchbacks, and high-altitude pacing taught me how to stay calm, conserve energy, and lead in thin air.',
   },
   {
     name: 'Mojón Rojo',
     range: 'Patagonia, Argentina',
     elevation: '7,438 ft',
-    photos: [mojon1, mojon2, mojon3, mojon4, mojon5, mojon6, mojon7, mojon8, mojon9, mojon10, mojon11, mojon12],
+    photos: mojonRojoPhotos,
     blurb: 'Patagonian wind and weather keep you humble. These missions remind me to respect nature and enjoy every ridge line.',
   },
   {
     name: 'Looking Glass Rock',
     range: 'Pisgah National Forest, NC',
     elevation: '3,969 ft',
-    photos: [lg1, lg2, lg3, lg4, lg5, lg6, lg7],
+    photos: lookingGlassPhotos,
     blurb: 'Blue Ridge sandstone, long rappels, and humid approach hikes — this is home terrain where I coach friends on their first multi-pitch climbs.',
   },
 ] as const
 
+/**
+ * About-me page combining a location card with interactive summit photo carousels.
+ */
 export default function AboutMe() {
   const [photoIndex, setPhotoIndex] = useState<Record<string, number>>({})
   const [modal, setModal] = useState<{ name: string; index: number } | null>(null)
