@@ -1,7 +1,13 @@
 import { profile } from '@/data/profile'
 import { Mail, Phone, Github, Linkedin } from 'lucide-react'
 
+/**
+ * Contact options supporting direct outreach across channels.
+ */
 export default function Contact() {
+  /**
+   * Normalized list of connection methods and their associated icons/links.
+   */
   const contactLinks = [
     { label: 'Phone', value: profile.phone, href: `tel:${profile.phone.replace(/[^0-9+]/g, '')}`, icon: Phone },
     { label: 'Email', value: profile.email, href: `mailto:${profile.email}`, icon: Mail },

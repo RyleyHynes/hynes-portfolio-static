@@ -1,16 +1,26 @@
+/**
+ * External Imports
+ */
 import { useEffect, useMemo, useState } from 'react'
 import { Routes, Route, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Moon, Sun, Github, Linkedin, Mail, MapPin, Plane } from 'lucide-react'
+/**
+ * Internal Imports
+ */
+import AboutMe from '@/pages/AboutMe'
 import { profile } from '@/data/profile'
 import Home from '@/pages/Home'
 import Projects from '@/pages/Projects'
 import Career from '@/pages/Career'
-import AboutMe from '@/pages/AboutMe'
 import SkillsExperience from '@/pages/SkillsExperience'
 import Contact from '@/pages/Contact'
 
-function useDarkMode() {
+/**
+ * Controls the Tailwind dark-mode class on the root document element.
+ * @returns helpers to check or toggle the dark-mode flag.
+ */
+const useDarkMode = () => {
   const [enabled, setEnabled] = useState(false)
   useEffect(() => {
     const root = document.documentElement
@@ -20,6 +30,10 @@ function useDarkMode() {
   return { enabled, setEnabled }
 }
 
+/**
+ * Shared animated wrapper that gives each route a consistent transition.
+ * @param props.children content of the routed page.
+ */
 const Page = ({ children }: { children: React.ReactNode }) => (
   <motion.main
     initial={{ opacity: 0, y: 8 }}
@@ -32,7 +46,11 @@ const Page = ({ children }: { children: React.ReactNode }) => (
   </motion.main>
 )
 
-export default function App() {
+/**
+ * Root layout handling page routing, theme toggling, and shared chrome.
+ * Animates route transitions while exposing nav links to key profile sections.
+ */
+const App = () => {
   const { enabled, setEnabled } = useDarkMode()
   const location = useLocation()
   useEffect(() => {
@@ -108,3 +126,5 @@ export default function App() {
     </div>
   )
 }
+
+export default App

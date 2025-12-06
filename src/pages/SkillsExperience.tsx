@@ -2,10 +2,16 @@ import type { ComponentType } from 'react'
 import { skills } from '@/data/profile'
 import { Code, Server, ShieldCheck, Rocket } from 'lucide-react'
 
+/**
+ * Small badge element used for tech stack tokens.
+ */
 function Pill({ children }: { children: React.ReactNode }) {
   return <span className="badge">{children}</span>
 }
 
+/**
+ * Skills page outlining tooling, practices, and experience highlights.
+ */
 export default function SkillsExperience() {
   const categories = [
     {
@@ -52,6 +58,9 @@ export default function SkillsExperience() {
     },
   ]
 
+  /**
+   * Quick bullets describing strengths.
+   */
   const goodAt = [
     'Turning designs into well-structured, accessible UIs',
     'Debugging calmly and communicating tradeoffs clearly',
@@ -60,6 +69,9 @@ export default function SkillsExperience() {
     'Moving between frontend polish and backend logic as needed',
   ]
 
+  /**
+   * Portfolio-ready achievements backing up the skill summary.
+   */
   const highlights = [
     'Built and maintained React/TypeScript frontends using reusable components, RTK Query data layers, and accessible UI patterns.',
     'Developed RESTful APIs and C#/.NET services integrated with SQL Server, Cosmos DB, and Firebase.',
@@ -113,6 +125,9 @@ export default function SkillsExperience() {
   )
 }
 
+/**
+ * Renders a gradient card for a given skill category.
+ */
 function CategoryCard({
   title,
   icon: Icon,
@@ -141,6 +156,9 @@ function CategoryCard({
   )
 }
 
+/**
+ * Shows a titled row of tech tokens or plain text descriptors.
+ */
 function SectionGroup({ label, items, plain }: { label: string; items: string[]; plain?: boolean }) {
   return (
     <div className="space-y-1">
