@@ -1,4 +1,4 @@
-import { routeMetadata } from '@/celium/routeMetadata'
+import { routeMetadata } from '@/utils/routeMetadata'
 
 const normalizeName = (value: string) => value.toLowerCase().replace(/[^a-z0-9]/g, '')
 

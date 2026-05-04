@@ -1,6 +1,6 @@
 import { listRoutes, type RouteModel } from '@/features/api/celiumRoutes'
-import type { PlanModel } from '@/celium/types/plan'
-import { mapRouteToActivity } from '@/celium/types/plan'
+import type { PlanModel } from '@/features/api/planTypes'
+import { mapRouteToActivity } from '@/features/api/planTypes'
 
 const STORAGE_KEY = 'celium:plans:v1'
 
