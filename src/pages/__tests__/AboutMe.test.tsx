@@ -3,12 +3,13 @@ import userEvent from '@testing-library/user-event'
 import AboutMe from '../AboutMe'
 
 describe('AboutMe page', () => {
-  it('shows base location and relocation notice', () => {
+  it('shows location and relocation notice', () => {
     render(<AboutMe />)
 
-    expect(screen.getByText(/Based in/i)).toBeInTheDocument()
-    expect(screen.getByText(/Willing to relocate/i)).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /Notable Summits/i })).toBeInTheDocument()
+    expect(screen.getByText(/Remote \(US\)/i)).toBeInTheDocument()
+    expect(screen.getByText(/Willing to relocate for the right team/i)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /Fun in the sun/i })).toBeInTheDocument()
+    expect(screen.queryByText(/A few mountains that shaped how I approach life and work/i)).not.toBeInTheDocument()
   })
 
   it('cycles Mount Rainier photo when pressing next then previous', () => {

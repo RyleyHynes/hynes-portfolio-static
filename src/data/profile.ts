@@ -5,7 +5,7 @@
 export const profile = {
   name: 'Ryley Hynes',
   title: 'Full‑Stack Application Engineer',
-  location: 'Nashville, TN',
+  location: 'Remote (US)',
   email: 'RyleyHynes@gmail.com',
   phone: '(518) 813‑2692',
   github: 'https://github.com/RyleyHynes',
@@ -18,11 +18,11 @@ export const profile = {
  * Categorized skill lists for the skills/experience page.
  */
 export const skills = {
-  frontend: ['TypeScript','React','Redux','RTK Query','HTML5','CSS3','SCSS','Bootstrap','Figma','Neutron DS'],
-  backend: ['C#','.NET','Python','Django','SQL','CosmosDB','REST','Swagger/OpenAPI'],
-  qa: ['Vitest','Jest','React Testing Library','Postman'],
-  devops: ['Azure DevOps','Git','GitHub'],
-  gis: ['ArcGIS','Survey123'],
+  frontend: ['TypeScript', 'React', 'Redux', 'RTK Query', 'HTML5', 'CSS3', 'SCSS', 'Bootstrap', 'Figma', 'Neutron DS'],
+  backend: ['C#', '.NET', 'Python', 'Django', 'SQL', 'CosmosDB', 'REST', 'Swagger/OpenAPI'],
+  qa: ['Vitest', 'Jest', 'React Testing Library', 'Postman'],
+  devops: ['Azure DevOps', 'Git', 'GitHub'],
+  gis: ['ArcGIS', 'Survey123'],
 }
 
 export type ExperienceRole = {
@@ -102,56 +102,30 @@ export const education = [
 /**
  * Shared tech stack reference reused across project cards.
  */
-export const STACK = ['TypeScript', 'React', 'SCSS', 'Python/Django', 'SQLite'] as const;
+export const STACK = ['TypeScript', 'React', 'SCSS', 'C#', '.NET', 'PostgreSQL'] as const;
 
 /**
  * Portfolio applications with marketing blurbs, key features, links, and stack.
  */
 export const projects = [
   {
-    name: 'Peak Planner',
+    name: 'Celium',
+    isLive: true,
     blurb:
-      'Plan alpine trips with routes, gear, partners, and weather windows. Full CRUD with auth and a clean, fast UI.',
+      'Built on connection.',
+    image: 'mycelialNetwork.png',
     features: [
-      'Trips, routes, waypoints, partners (CRUD)',
-      'Gear lists + packing presets',
-      'Search, filters, pagination'
+      'Route discovery with filters, waypoints, and collaborative planning',
+      'Shared route status between exploration and trip planning',
+      'Trip context and scenario modeling based on conditions and past reports'
     ],
     links: [
-      { label: 'Launch App', href: '/apps/peak-planner' },
-      { label: 'API Docs', href: '/api/peak-planner/schema/swagger-ui/' },
-      { label: 'Repository', href: 'https://github.com/RyleyHynes/hynes-portfolio-static' }
-    ],
-    stack: STACK
-  },
-  {
-    name: 'Route Log',
-    blurb:
-      'Personal climbing logbook with grades, styles, notes, and media. Analyze progress over time.',
-    features: [
-      'Areas, routes, ascents, partners (CRUD)',
-      'Filters, sorting, and route tagging',
-      'CSV import (bulk adds)'
-    ],
-    links: [
-      { label: 'Launch App', href: '/apps/route-log' },
-      { label: 'API Docs', href: '/api/route-log/schema/swagger-ui/' },
-      { label: 'Repository', href: 'https://github.com/RyleyHynes/hynes-portfolio-static' }
-    ],
-    stack: STACK
-  },
-  {
-    name: 'Trail Supply',
-    blurb:
-      'Inventory + orders for outdoor gear. Track products, suppliers, purchase orders, and fulfillment.',
-    features: [
-      'Products, SKUs, suppliers, orders (CRUD)',
-      'Stock levels + low-inventory view',
-      'CSV export for admin ops'
-    ],
-    links: [
-      { label: 'Launch App', href: '/apps/trail-supply' },
-      { label: 'API Docs', href: '/api/trail-supply/schema/swagger-ui/' },
+      { label: 'View Project', href: '/projects/celium' },
+      {
+        label: 'Launch App',
+        href: '/apps/celium',
+        disabledReason: 'Hang tight, we are currently working on deploying celium',
+      },
       { label: 'Repository', href: 'https://github.com/RyleyHynes/hynes-portfolio-static' }
     ],
     stack: STACK

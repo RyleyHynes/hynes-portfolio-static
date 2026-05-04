@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import Home from '../Home'
-import { projects } from '@/data/profile'
 
 describe('Home page', () => {
   it('renders hero copy and CTA buttons', () => {
@@ -11,19 +10,20 @@ describe('Home page', () => {
       </MemoryRouter>
     )
 
-    expect(screen.getByRole('heading', { name: /Crafting dependable software/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Full-Stack Software Engineer' })).toBeInTheDocument()
+    expect(screen.getByAltText('Ryley Hynes headshot')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /Explore Projects/i })).toHaveAttribute('href', '/projects')
     expect(screen.getByRole('link', { name: 'Contact' })).toHaveAttribute('href', '/contact')
   })
 
-  it('displays preview cards for the first three projects', () => {
+  it('renders the about me section', () => {
     render(
       <MemoryRouter>
         <Home />
       </MemoryRouter>
     )
 
-    const cards = screen.getAllByRole('heading', { level: 3 })
-    expect(cards).toHaveLength(Math.min(3, projects.length))
+    expect(screen.getByRole('heading', { name: 'About Me' })).toBeInTheDocument()
+    expect(screen.getByText(/environmental and healthcare sectors/i)).toBeInTheDocument()
   })
 })
