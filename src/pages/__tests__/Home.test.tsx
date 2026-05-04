@@ -16,14 +16,15 @@ describe('Home page', () => {
     expect(screen.getByRole('link', { name: 'Contact' })).toHaveAttribute('href', '/contact')
   })
 
-  it('renders the about me section', () => {
+  it('does not render legacy about me content on the home page', () => {
     render(
       <MemoryRouter>
         <Home />
       </MemoryRouter>
     )
 
-    expect(screen.getByRole('heading', { name: 'About Me' })).toBeInTheDocument()
-    expect(screen.getByText(/environmental and healthcare sectors/i)).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'About Me' })).not.toBeInTheDocument()
+    expect(screen.queryByText(/environmental and healthcare sectors/i)).not.toBeInTheDocument()
+    expect(screen.getByText(/I build reliable, modern software/i)).toBeInTheDocument()
   })
 })
