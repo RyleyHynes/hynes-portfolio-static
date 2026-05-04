@@ -11,10 +11,13 @@ import { Moon, Sun, Github, Linkedin, Mail, MapPin, Plane } from 'lucide-react'
 import AboutMe from '@/pages/AboutMe'
 import { profile } from '@/data/profile'
 import Home from '@/pages/Home'
-import Projects from '@/pages/Projects'
 import Career from '@/pages/Career'
+import Projects from '@/pages/Projects'
 import SkillsExperience from '@/pages/SkillsExperience'
 import Contact from '@/pages/Contact'
+import IconButton from '@/components/buttons/IconButton'
+import CeliumProject from '@/pages/projects/CeliumProject'
+import ComponentGallery from '@/pages/ComponentGallery'
 
 /**
  * Controls the Tailwind dark-mode class on the root document element.
@@ -53,16 +56,18 @@ const Page = ({ children }: { children: React.ReactNode }) => (
 const App = () => {
   const { enabled, setEnabled } = useDarkMode()
   const location = useLocation()
+  // Surface the exact frontend build in the shared footer for quick support/debug checks.
+  const appBuildLabel = `v${__APP_VERSION__}${__APP_GIT_SHA__ && __APP_GIT_SHA__ !== 'dev' ? ` (${__APP_GIT_SHA__})` : ''}`
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [location.pathname])
 
   const nav = useMemo(() => ([
     { to: '/', label: 'Home' },
-    { to: '/projects', label: 'Projects' },
     { to: '/career', label: 'Career' },
-    { to: '/about', label: 'About Me' },
+    { to: '/projects', label: 'Projects' },
     { to: '/skills-experience', label: 'Tech Stack & Skills' },
+    { to: '/about', label: 'About Me' },
     { to: '/contact', label: 'Contact' },
   ]), [])
 
@@ -80,15 +85,29 @@ const App = () => {
           </div>
           <nav className="hidden md:flex items-center gap-6">
             {nav.map(item => (
-              <NavLink key={item.to} to={item.to} className={({isActive}) => `navlink ${isActive ? 'text-brand-600 dark:text-brand-400' : ''}`}>{item.label}</NavLink>
+              <NavLink key={item.to} to={item.to} className={({isActive}) => `navlink ${isActive ? 'navlink-active' : ''}`}>{item.label}</NavLink>
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            <a className="btn-ghost" href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={18} /></a>
-            <a className="btn-ghost" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a>
-            <button className="btn-ghost" onClick={() => setEnabled(!enabled)} aria-label="Toggle dark mode">
-              {enabled ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
+            <IconButton
+              href={profile.github}
+              target="_blank"
+              rel="noreferrer"
+              ariaLabel="GitHub"
+              icon={<Github size={18} />}
+            />
+            <IconButton
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              ariaLabel="LinkedIn"
+              icon={<Linkedin size={18} />}
+            />
+            <IconButton
+              ariaLabel="Toggle dark mode"
+              icon={enabled ? <Sun size={18} /> : <Moon size={18} />}
+              onClick={() => setEnabled(!enabled)}
+            />
           </div>
         </div>
       </header>
@@ -99,6 +118,8 @@ const App = () => {
           <Routes location={location}>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/celium" element={<CeliumProject />} />
+            <Route path="/ui" element={<ComponentGallery />} />
             <Route path="/career" element={<Career />} />
             <Route path="/about" element={<AboutMe />} />
             <Route path="/skills-experience" element={<SkillsExperience />} />
@@ -121,6 +142,7 @@ const App = () => {
             <a className="navlink" href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
             <a className="navlink" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
+          <div className="text-xs text-slate-400 sm:ml-auto">Build {appBuildLabel}</div>
         </div>
       </footer>
     </div>

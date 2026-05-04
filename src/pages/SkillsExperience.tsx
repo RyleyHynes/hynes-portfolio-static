@@ -1,18 +1,18 @@
 import type { ComponentType } from 'react'
-import { skills } from '@/data/profile'
 import { Code, Server, ShieldCheck, Rocket } from 'lucide-react'
+import Badge from '@/components/data-display/Badge'
 
 /**
  * Small badge element used for tech stack tokens.
  */
 function Pill({ children }: { children: React.ReactNode }) {
-  return <span className="badge">{children}</span>
+  return <Badge>{children}</Badge>
 }
 
 /**
  * Skills page outlining tooling, practices, and experience highlights.
  */
-export default function SkillsExperience() {
+const SkillsExperience = () => {
   const categories = [
     {
       title: 'Frontend Engineering',
@@ -21,7 +21,7 @@ export default function SkillsExperience() {
       sections: [
         { label: 'Technologies', items: ['TypeScript', 'React', 'Redux', 'RTK Query', 'React Router', 'HTML5', 'CSS3', 'SCSS', 'Tailwind', 'Bootstrap'] },
         { label: 'Practices', items: ['Accessible UI (WCAG)', 'Component systems', 'State management', 'Responsive layouts'], plain: true },
-        { label: 'Tools', items: ['Figma', 'Neutron DS', 'Chrome DevTools'] },
+        { label: 'Tools', items: ['Figma', 'Neutron DS', 'Tailwind', 'Chrome DevTools'] },
       ],
     },
     {
@@ -58,34 +58,12 @@ export default function SkillsExperience() {
     },
   ]
 
-  /**
-   * Quick bullets describing strengths.
-   */
-  const goodAt = [
-    'Turning designs into well-structured, accessible UIs',
-    'Debugging calmly and communicating tradeoffs clearly',
-    'Making code easy for the next engineer to extend',
-    'Improving slow or unclear API calls with better contracts',
-    'Moving between frontend polish and backend logic as needed',
-  ]
-
-  /**
-   * Portfolio-ready achievements backing up the skill summary.
-   */
-  const highlights = [
-    'Built and maintained React/TypeScript frontends using reusable components, RTK Query data layers, and accessible UI patterns.',
-    'Developed RESTful APIs and C#/.NET services integrated with SQL Server, Cosmos DB, and Firebase.',
-    'Improved reliability by adding automated tests (Vitest, Pytest, Jest) and refining CI/CD pipelines in Azure DevOps.',
-    'Used GitHub + Git to manage branches, run reviews, document changes, and ensure clean releases.',
-    'Collaborated across UX, backend, and product to deliver scoped iterations in steady cadence.',
-  ]
-
   return (
     <section className="grid gap-10 text-slate-900 dark:text-slate-100">
       <header className="space-y-3">
         <h2 className="section-title">Tech Stack & Skills</h2>
         <p className="text-slate-600 dark:text-slate-300">
-          Frontend-leaning full-stack engineer focused on accessible UIs, clean architecture, and reliable delivery.
+          Full-stack engineer focused on accessible UIs, clean architecture, and reliable delivery.
         </p>
       </header>
 
@@ -94,33 +72,6 @@ export default function SkillsExperience() {
           <CategoryCard key={cat.title} {...cat} />
         ))}
       </div>
-
-      <section className="grid md:grid-cols-2 gap-6">
-        <article className="card p-6 space-y-3">
-          <h3 className="font-semibold text-lg">What I’m Good At</h3>
-          <ul className="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1">
-            {goodAt.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </article>
-        <article className="card p-6 space-y-3">
-          <h3 className="font-semibold text-lg">How I Work</h3>
-          <p className="text-sm text-slate-600 dark:text-slate-300">
-            I approach work by breaking problems down, communicating early, and shipping in steady increments. I like writing clear code that’s
-            easy for teammates to build on, and I’m comfortable moving between frontend details and backend logic when needed.
-          </p>
-        </article>
-      </section>
-
-      <section className="card p-6 space-y-4 bg-slate-50/60 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800">
-        <h3 className="font-semibold text-lg">Recent Experience Highlights</h3>
-        <ul className="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-2">
-          {highlights.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </section>
     </section>
   )
 }
@@ -169,3 +120,5 @@ function SectionGroup({ label, items, plain }: { label: string; items: string[];
     </div>
   )
 }
+
+export default SkillsExperience

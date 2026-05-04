@@ -6,7 +6,7 @@ describe('SkillsExperience page', () => {
     render(<SkillsExperience />)
 
     expect(screen.getByRole('heading', { name: 'Tech Stack & Skills' })).toBeInTheDocument()
-    expect(screen.getByText(/Frontend-leaning full-stack engineer/i)).toBeInTheDocument()
+    expect(screen.getByText(/Full-stack engineer/i)).toBeInTheDocument()
   })
 
   it('renders all category cards with sample items', () => {
@@ -22,12 +22,12 @@ describe('SkillsExperience page', () => {
     expect(screen.getByText('Azure DevOps pipelines')).toBeVisible()
   })
 
-  it('shows narrative sections for skills and highlights', () => {
+  it('omits narrative sections after the four main cards', () => {
     render(<SkillsExperience />)
 
-    expect(screen.getByRole('heading', { name: /What I’m Good At/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /How I Work/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /Recent Experience Highlights/i })).toBeInTheDocument()
-    expect(screen.getByText(/React\/TypeScript frontends/i)).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: /What I’m Good At/i })).not.toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: /How I Work/i })).not.toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: /Recent Experience Highlights/i })).not.toBeInTheDocument()
+    expect(screen.queryByText(/React\/TypeScript frontends/i)).not.toBeInTheDocument()
   })
 })

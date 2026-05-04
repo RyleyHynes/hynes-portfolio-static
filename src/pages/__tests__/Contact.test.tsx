@@ -3,13 +3,12 @@ import Contact from '../Contact'
 import { profile } from '@/data/profile'
 
 describe('Contact page', () => {
-  it('renders supporting intro content and helper chips', () => {
+  it('renders the contact heading without helper pitch content', () => {
     render(<Contact />)
 
     expect(screen.getByRole('heading', { name: 'Contact' })).toBeInTheDocument()
-    expect(screen.getByText(/Ways I can help/)).toBeInTheDocument()
-    expect(screen.getByText('UI engineering')).toBeVisible()
-    expect(screen.getByText('API integration')).toBeVisible()
+    expect(screen.queryByText(/Ways I can help/)).not.toBeInTheDocument()
+    expect(screen.queryByText('UI engineering')).not.toBeInTheDocument()
   })
 
   it('shows key contact links with correct targets', () => {

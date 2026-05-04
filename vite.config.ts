@@ -5,6 +5,10 @@ import path from 'path'
 
 export default defineConfig({
   base: '/hynes-portfolio-static/',
+  define: {
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version ?? '0.0.0'),
+    __APP_GIT_SHA__: JSON.stringify(process.env.VITE_GIT_SHA ?? 'dev'),
+  },
   build: {
     manifest: true,
   },

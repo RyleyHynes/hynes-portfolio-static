@@ -1,12 +1,11 @@
 import { education, experience } from '@/data/profile'
 import { GraduationCap, Briefcase } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
 
 /**
  * Timeline and narrative of professional and education experience.
  * Pulls structured data from `profile` plus localized environmental science history.
  */
-export default function Career() {
+const Career = () => {
   const ut = education.find((ed) => ed.school.includes('Tennessee'))
   const hca = experience.find((exp) => exp.company === 'HCA Healthcare')
 
@@ -48,79 +47,25 @@ export default function Career() {
     },
   ]
 
-  /**
-   * Card layout metadata for the education callouts.
-   */
-  type EducationHighlight = {
-    school: string
-    title: string
-    range: string
-    description: string
-    gradient: string
-    border: string
-    icon: LucideIcon
-    accent: string
-    bulletTone: string
-    bullets?: string[]
-  }
+  const nssBullets = [
+    'Daily hands-on application of OOP fundamentals through group and solo projects.',
+    'Built single-page applications in vanilla JavaScript and React.',
+    'Ran agile project boards with GitHub Projects (boards + issues).',
+    'Used Git/GitHub for version control, reviews, and release readiness.',
+    'Practiced solution design via whiteboarding, architecture sketches, and wireframes.',
+  ]
 
-  /**
-   * Education/certification cards that render with gradient chrome.
-   */
-  const educationHighlights: EducationHighlight[] = [
-    {
-      school: 'Nashville Software School',
-      title: 'Full-Stack Web Development Certificate',
-      range: 'Apr 2022 – Sep 2022',
-      description:
-        'Intensive full-time, six-month bootcamp focused on Python/Django fundamentals, problem solving, and a simulated SCRUM product environment for the capstone quarter.',
-      bullets: [
-        'Daily hands-on application of OOP fundamentals through group and solo projects.',
-        'Built single-page applications in vanilla JavaScript and React.',
-        'Ran agile project boards with GitHub Projects (boards + issues).',
-        'Used Git/GitHub for version control, reviews, and release readiness.',
-        'Practiced solution design via whiteboarding, architecture sketches, and wireframes.',
-      ],
-      gradient: 'from-white via-orange-50 to-white dark:from-slate-950 dark:via-orange-950/20 dark:to-slate-950',
-      border: 'border-orange-200/70 dark:border-orange-500/20',
-      icon: GraduationCap,
-      accent: 'bg-orange-500/10 text-orange-600 dark:text-orange-200',
-      bulletTone: 'bg-orange-500',
-    },
-    ...(ut
-      ? [
-          {
-            school: ut.school,
-            title: 'B.S. Environmental & Soil Science • Minor in Watershed Science',
-            range: ut.range,
-            description:
-              'Field-focused program blending hydrology, soil science, and watershed systems with applied research and data analysis.',
-            bullets: [
-              'Completed hands-on labs in soil classification, water quality testing, and watershed assessment across East Tennessee.',
-              'Used ESRI tools for GIS mapping, landform analysis, and environmental modeling projects.',
-              'Worked in small research groups to collect field data, maintain sampling documentation, and present findings to faculty.',
-              'Developed technical writing skills through lab reports, environmental summaries, and regulatory-style documentation.',
-            ],
-            gradient: 'from-white via-orange-50/70 to-white dark:from-slate-950 dark:via-orange-950/20 dark:to-slate-950',
-            border: 'border-orange-200/70 dark:border-orange-500/20',
-            icon: GraduationCap,
-            accent: 'bg-orange-500/10 text-orange-600 dark:text-orange-200',
-            bulletTone: 'bg-orange-500',
-          },
-        ]
-      : []),
+  const utBullets = [
+    'Completed hands-on labs in soil classification, water quality testing, and watershed assessment across East Tennessee.',
+    'Used ESRI tools for GIS mapping, landform analysis, and environmental modeling projects.',
+    'Worked in small research groups to collect field data, maintain sampling documentation, and present findings to faculty.',
+    'Developed technical writing skills through lab reports, environmental summaries, and regulatory-style documentation.',
   ]
 
   return (
     <section className="grid gap-8 text-slate-900 dark:text-slate-100">
-      <header className="grid gap-4">
+      <header>
         <h2 className="section-title mb-0">Career</h2>
-        <p className="text-slate-600 dark:text-slate-300">
-          I’m a developer who likes building straightforward, reliable software. I care about usability,
-          clear structure, and making things that feel good to interact with. Away from the keyboard, I spend a lot of time in the mountains —
-          climbing and hiking have been a big part of my life, and they’ve taught me to stay patient, prepared, and focused. I try to bring that
-          approach into every project I work on.
-        </p>
       </header>
 
       {hca && (
@@ -166,6 +111,39 @@ export default function Career() {
 
       <section className="grid gap-6">
         <header className="flex flex-col gap-1">
+          <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Continued Education</p>
+          <h3 className="text-2xl font-semibold">Nashville Software School</h3>
+          <p className="text-sm text-slate-600 dark:text-slate-300">Full-time software training that bridged field science work into production application engineering.</p>
+        </header>
+
+        <div className="rounded-3xl border border-sky-200/70 dark:border-sky-500/20 bg-gradient-to-br from-white via-sky-50/50 to-white dark:from-slate-950 dark:via-sky-950/20 dark:to-slate-950 p-6 sm:p-8 shadow-lg shadow-sky-400/10">
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="h-12 w-12 rounded-2xl bg-sky-500/10 text-sky-600 dark:text-sky-200 grid place-items-center">
+              <GraduationCap />
+            </div>
+            <div>
+              <p className="text-sm uppercase tracking-wide text-sky-600 dark:text-sky-300">Nashville Software School</p>
+              <h4 className="text-xl font-semibold">Full-Stack Web Development Certificate</h4>
+              <p className="text-sm text-slate-600 dark:text-slate-300">Apr 2022 – Sep 2022</p>
+            </div>
+          </div>
+
+          <p className="mt-5 text-sm text-slate-600 dark:text-slate-300">
+            Intensive full-time, six-month bootcamp focused on Python/Django fundamentals, problem solving, and a simulated SCRUM product environment for the capstone quarter.
+          </p>
+          <ul className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+            {nssBullets.map((bullet) => (
+              <li key={bullet} className="flex gap-3">
+                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-sky-400 flex-shrink-0" aria-hidden="true" />
+                <p className="flex-1">{bullet}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="grid gap-6">
+        <header className="flex flex-col gap-1">
           <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Education & Early Career</p>
           <h3 className="text-2xl font-semibold">State of Tennessee</h3>
           <p className="text-sm text-slate-600 dark:text-slate-300">Field science discipline that still drives how I ship software today.</p>
@@ -205,43 +183,44 @@ export default function Career() {
             </ul>
           </div>
         </div>
-
-        {educationHighlights.length > 0 && (
-          <div className="grid gap-4 md:grid-cols-2">
-            {educationHighlights.map((edu) => (
-              <article
-                key={edu.school}
-                className={`rounded-3xl border ${edu.border} bg-gradient-to-br ${edu.gradient} p-6 sm:p-8 shadow-lg shadow-slate-900/5 dark:shadow-none`}
-              >
-                <div className="flex items-center gap-4">
-                  <div className={`h-12 w-12 rounded-2xl grid place-items-center flex-shrink-0 ${edu.accent}`}>
-                    <edu.icon />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2 text-xs">
-                      <p className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400">{edu.school}</p>
-                      <span className="text-xs text-slate-400 dark:text-slate-500">•</span>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">{edu.range}</p>
-                    </div>
-                    <h4 className="mt-1 text-xl font-semibold">{edu.title}</h4>
-                  </div>
-                </div>
-                <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">{edu.description}</p>
-                {edu.bullets && (
-                  <ul className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                    {edu.bullets.map((bullet) => (
-                      <li key={bullet} className="flex gap-3">
-                        <span className={`mt-2 h-1.5 w-1.5 rounded-full flex-shrink-0 ${edu.bulletTone}`} aria-hidden="true" />
-                        <p className="flex-1">{bullet}</p>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </article>
-            ))}
-          </div>
-        )}
       </section>
+
+      {ut && (
+        <section className="grid gap-6">
+          <header className="flex flex-col gap-1">
+            <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Formal Education</p>
+            <h3 className="text-2xl font-semibold">University of Tennessee, Knoxville</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-300">Environmental science foundation behind the field work, systems thinking, and technical documentation.</p>
+          </header>
+
+          <div className="rounded-3xl border border-orange-200/70 dark:border-orange-500/20 bg-gradient-to-br from-white via-orange-50/50 to-white dark:from-slate-950 dark:via-orange-950/20 dark:to-slate-950 p-6 sm:p-8 shadow-lg shadow-orange-400/10">
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="h-12 w-12 rounded-2xl bg-orange-500/10 text-orange-600 dark:text-orange-200 grid place-items-center">
+                <GraduationCap />
+              </div>
+              <div>
+                <p className="text-sm uppercase tracking-wide text-orange-600 dark:text-orange-300">{ut.school}</p>
+                <h4 className="text-xl font-semibold">B.S. Environmental & Soil Science • Minor in Watershed Science</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-300">{ut.range}</p>
+              </div>
+            </div>
+
+            <p className="mt-5 text-sm text-slate-600 dark:text-slate-300">
+              Field-focused program blending hydrology, soil science, and watershed systems with applied research and data analysis.
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+              {utBullets.map((bullet) => (
+                <li key={bullet} className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-orange-400 flex-shrink-0" aria-hidden="true" />
+                  <p className="flex-1">{bullet}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
     </section>
   )
 }
+
+export default Career

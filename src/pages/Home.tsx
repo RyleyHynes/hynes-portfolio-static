@@ -1,55 +1,49 @@
 import { motion } from 'framer-motion'
-import { projects } from '@/data/profile'
 import { Link } from 'react-router-dom'
-import { ArrowUpRight} from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 
 /**
- * Landing page hero plus teaser cards for select projects.
+ * Landing page hero and personal summary.
  */
-export default function Home() {
+const Home = () => {
+  const headshotSrc = `${import.meta.env.BASE_URL}ryley-hynes.png`
+
   return (
-    <section className="grid gap-10">
-      <div className="card p-10 text-slate-900 dark:text-slate-100">
-        <p className="text-sm uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-300">Full-stack engineer</p>
-        <h1 className="section-title mt-3">Crafting dependable software for healthcare & beyond.</h1>
-        <p className="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-3xl">
-          I focus on clear architecture, thoughtful UI, and steady delivery — React + TypeScript on the frontend, Python/Django and C#/.NET on the
-          backend. My goal: build modern software that teams enjoy maintaining.
-        </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link to="/projects" className="btn-primary inline-flex items-center gap-2">
-            Explore Projects <ArrowUpRight size={16} />
-          </Link>
-          <Link to="/contact" className="btn-ghost">
-            Contact
-          </Link>
+    <motion.section
+      className="card p-10 text-slate-900 dark:text-slate-100"
+      initial={{ opacity: 0, y: 8 }}
+      transition={{ duration: 0.25 }}
+      viewport={{ once: true, amount: 0.2 }}
+      whileInView={{ opacity: 1, y: 0 }}
+    >
+      <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_20rem] md:items-start">
+        <div>
+          <p className="text-sm uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-300">Ryley Hynes</p>
+          <h1 className="section-title mt-3">Full-Stack Software Engineer</h1>
+          <p className="mt-4 max-w-3xl text-lg text-slate-600 dark:text-slate-300">
+            I build reliable, modern software with a focus on clean architecture, intuitive user experiences, and maintainable systems. My core stack is
+            TypeScript/React and C#/.NET, with experience shipping production software in healthcare environments where
+            quality matters.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link className="btn-primary inline-flex items-center gap-2" to="/projects">
+              Explore Projects <ArrowUpRight size={16} />
+            </Link>
+            <Link className="btn-ghost" to="/contact">
+              Contact
+            </Link>
+          </div>
+        </div>
+        <div className="justify-self-end">
+          <img
+            alt="Ryley Hynes headshot"
+            className="h-auto w-full max-w-xs rounded-lg object-cover shadow-sm"
+            src={headshotSrc}
+          />
         </div>
       </div>
-
-      <div className="grid md:grid-cols-3 gap-6">
-        {projects.slice(0, 3).map((p, i) => (
-          <motion.article
-            key={p.name}
-            className="card card-coming-soon p-6 text-slate-900 dark:text-slate-100"
-            aria-disabled="true"
-            title="Live demos coming soon"
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ delay: i * 0.07 }}
-          >
-            <h3 className="font-semibold text-lg">{p.name}</h3>
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-200">{p.blurb}</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {p.stack.map((s) => (
-                <span key={s} className="badge">
-                  {s}
-                </span>
-              ))}
-            </div>
-          </motion.article>
-        ))}
-      </div>
-    </section>
+    </motion.section>
   )
 }
+
+export default Home
